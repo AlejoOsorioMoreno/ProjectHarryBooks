@@ -1,4 +1,5 @@
-import React, {useState,useEffect} from "react";
+import { useState } from 'react';
+import Navbar from '../Navbar/Navbar';
 
 
 // eslint-disable-next-line react/prop-types
@@ -7,7 +8,6 @@ export default function Header({ cartCount, selectedProducts }) {
 
   const viewCart = () => {
     setIsModalOpen(true);
-    console.log("Entro al modal");
   };
 
   const closeCart = () => {
@@ -17,10 +17,12 @@ export default function Header({ cartCount, selectedProducts }) {
     <>
       <section id='header' className='flex items-center '>
         <header className=' flex gap-20 '>
+          <img className='w-60 h-70' src={react} alt='' />
           <h1 id='h1' className='flex items-center text-5xl'>
-            HarryBooks
+            Portafolio
           </h1>
         </header>
+        <Navbar />
         <div className='flex items-center'>
           <button>
             <span role='img' aria-label='Carrito de Compras' className='text-2xl ml-4' onClick={viewCart}>
@@ -75,4 +77,3 @@ export default function Header({ cartCount, selectedProducts }) {
     </>
   );
 }
-
