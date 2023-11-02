@@ -46,35 +46,30 @@ export default function Header({ cartCount, selectedLibros }) {
         </div>
       </section>
       {isModalOpen && (
-        <div className="flex justify-center">
-          <div className="flex justify-center absolute z-20 w-96">
-            <div className="modal-overlay" onClick={closeCart}></div>
-            <div className="modal h-auto bg-white">
-              <div className="modal-content flex flex-col items-center">
-                <br />
-                <ul className="flex justify-center flex-col items-center w-96">
-                  {selectedLibros.map((libro, i) => (
-                    <div key={i}>
-                      <li className="text-center w-96">{libro.titulo_original}</li>
-                      <li>
-                        <img src={libro.imageResult} className="w-16" alt="" />
-                      </li>
-                      <li>{libro.priceResult} $</li>
-                      <li>{libro.stockResult} Unidades</li>
-                      <button
-                        className="absolute top-0 right-0 m-2 text-2xl cursor-pointer"
-                        onClick={closeCart}
-                      ></button>
-                      <hr className="h-[2px] bg-black w-96" />
-
-                    </div>
-                  ))}
-                </ul>
-              </div>
+  <div className="fixed inset-0 flex items-center justify-center z-50 bg-opacity-50 bg-gray-900">
+    <div className="relative z-10 w-96 p-4 bg-white rounded shadow-lg">
+      <button className="absolute top-2 right-2 p-2 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-600 hover:text-gray-800" onClick={closeCart}>
+        X
+      </button>
+      <div className="modal-content flex flex-col items-center">
+        <ul className="flex flex-col items-center space-y-4">
+          {selectedLibros.map((libro, i) => (
+            <div key={i}>
+              <li className="text-center">{libro.titulo_original}</li>
+              <li>
+                <img src={libro.imageResult} className="w-16" alt="" />
+              </li>
+              <li>{libro.priceResult} $</li>
+              <li>{libro.stockResult} Unidades</li>
+              <hr className="my-2 border-t border-gray-300" />
             </div>
-          </div>
-        </div>
-      )}
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+)}
+
     </>
   );
 }
