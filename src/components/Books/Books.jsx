@@ -34,15 +34,10 @@ export const Books = () => {
         updatedSelectedLibros.push({ ...libro, quantity: selectedQuantity });
       }
 
-      /* setStockLeft((prevStock) => {
-        const updatedStock = [...prevStock];
-        updatedStock[index] -= selectedQuantity;
-        return updatedStock;
-      }); */
 
       setSelectedLibros(updatedSelectedLibros);
       updateCartCount(updatedSelectedLibros);
-      resetSelectedQuantity(libro); // Restablecer la cantidad después de la compra
+      resetSelectedQuantity(libro); 
     }
   };
 
@@ -58,7 +53,7 @@ export const Books = () => {
     const id = libro.id;
     setSelectedQuantities((prevQuantities) => {
       const updatedQuantities = { ...prevQuantities };
-      updatedQuantities[id] = 1; // Restablecer la cantidad a 1
+      updatedQuantities[id] = 1; 
       return updatedQuantities;
     });
   };

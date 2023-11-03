@@ -17,18 +17,16 @@ export default function Header({ cartCount, selectedLibros, actualizarStock, upd
   };
 
   const handleBuyClick = () => {
-    // Realizar la lógica de compra aquí, si es necesario
 
-    // Muestra la alerta "COMPRA EXITOSA"
     alert('COMPRA EXITOSA');
 
-    // Cierra el modal
+
     closeCart();
 
-    // Vacía el carrito
+
     setCart([]);
 
-    // Actualizar el stock de los libros
+
     selectedLibros.forEach((libro) => {
       actualizarStock(libro.id, libro.quantity);
     });
@@ -118,7 +116,7 @@ export default function Header({ cartCount, selectedLibros, actualizarStock, upd
                 className="bg-blue-500 text-white py-2 px-4 mt-4 hover-bg-blue-600"
                 onClick={handleBuyClick}
               >
-                Comprar
+                Pagar
               </button>
             </div>
           </div>
