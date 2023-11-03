@@ -74,7 +74,7 @@ export default function Header({ cartCount, selectedLibros, actualizarStock, upd
       </section>
 
       {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-opacity-50 bg-gray-900">
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-opacity-50 bg-gray-900 text-black">
           <div className="relative z-10 mx-auto max-w-xl p-4 bg-white rounded shadow-lg overflow-y-auto">
             <button
               className="absolute top-2 right-2 p-2 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-600 hover:text-gray-800"
@@ -95,7 +95,7 @@ export default function Header({ cartCount, selectedLibros, actualizarStock, upd
                     <li>{libro.stockResult} Unidades</li>
                     <li>
                       Cantidad:
-                      <input
+                      <input className='bg-white'
                         type="number"
                         min="1"
                         value={libro.quantity}
