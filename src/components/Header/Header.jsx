@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function Header({ cartCount, selectedLibros }) {
+export default function Header({ cartCount, selectedLibros, actualizarStock }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [cart, setCart] = useState([]);
 
@@ -27,6 +27,11 @@ export default function Header({ cartCount, selectedLibros }) {
 
     // Vacía el carrito
     setCart([]);
+
+    // Actualizar el stock de los libros
+    selectedLibros.forEach((libro) => {
+      actualizarStock(libro.id, libro.quantity);
+    });
   };
 
   const addToCart = (libro) => {

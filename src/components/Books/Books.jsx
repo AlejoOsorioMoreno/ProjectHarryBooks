@@ -34,11 +34,11 @@ export const Books = () => {
         updatedSelectedLibros.push({ ...libro, quantity: selectedQuantity });
       }
 
-      setStockLeft((prevStock) => {
+      /* setStockLeft((prevStock) => {
         const updatedStock = [...prevStock];
         updatedStock[index] -= selectedQuantity;
         return updatedStock;
-      });
+      }); */
 
       setSelectedLibros(updatedSelectedLibros);
       updateCartCount(updatedSelectedLibros);
@@ -63,10 +63,19 @@ export const Books = () => {
     });
   };
 
+  const actualizarStock = (id, cantidad) => {
+    setStockLeft((prevStock) => {
+      const updatedStock = [...prevStock];
+      const index = libros.findIndex((libro) => libro.id === id);
+      updatedStock[index] -= cantidad;
+      return updatedStock;
+    });
+  };
+
   const resultBooks = libros.map((libro, i) => {
     const priceResult = price[i];
     const imageResult = urlsImage[i];
-    const stockResult = stock[i];
+    const stockResult = stockLeft[i];
 
     const selectedLibro = selectedLibros.find((item) => item.id === libro.id);
     const selectedQuantity = selectedQuantities[libro.id] || 1;
@@ -76,7 +85,7 @@ export const Books = () => {
 
   return (
     <div>
-      <Header cartCount={cartCount} selectedLibros={selectedLibros} />
+      <Header cartCount={cartCount} selectedLibros={selectedLibros} actualizarStock={actualizarStock} />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {resultBooks.map((books) => (
           <div key={books.id} className="border p-4 shadow-md">
