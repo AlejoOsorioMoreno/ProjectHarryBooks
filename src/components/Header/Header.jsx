@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 export default function Header({ cartCount, selectedLibros }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [cart, setCart] = useState([]); // Estado del carrito de compras
+  const [cart, setCart] = useState([]);
 
   const viewCart = () => {
     setIsModalOpen(true);
@@ -12,7 +12,19 @@ export default function Header({ cartCount, selectedLibros }) {
     setIsModalOpen(false);
   };
 
-  // Función para agregar un libro al carrito
+  const handleBuyClick = () => {
+    // Realizar la lógica de compra aquí, si es necesario
+
+    // Muestra la alerta "COMPRA EXITOSA"
+    alert('COMPRA EXITOSA');
+
+    // Cierra el modal
+    closeCart();
+
+    // Vacía el carrito
+    setCart([]);
+  };
+
   const addToCart = (libro) => {
     const updatedCart = [...cart];
     const existingItemIndex = updatedCart.findIndex((item) => item.id === libro.id);
@@ -51,8 +63,8 @@ export default function Header({ cartCount, selectedLibros }) {
       </section>
 
       {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-opacity-50 bg-gray-900 overflow-y-auto">
-          <div className="relative z-10 w-96 p-4 bg-white rounded shadow-lg">
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-opacity-50 bg-gray-900">
+          <div className="relative z-10 mx-auto max-w-xl p-4 bg-white rounded shadow-lg overflow-y-auto">
             <button
               className="absolute top-2 right-2 p-2 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-600 hover:text-gray-800"
               onClick={closeCart}
@@ -85,6 +97,12 @@ export default function Header({ cartCount, selectedLibros }) {
                   </div>
                 ))}
               </ul>
+              <button
+                className="bg-blue-500 text-white py-2 px-4 mt-4 hover-bg-blue-600"
+                onClick={handleBuyClick}
+              >
+                Comprar
+              </button>
             </div>
           </div>
         </div>
