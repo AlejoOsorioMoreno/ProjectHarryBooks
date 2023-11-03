@@ -8,6 +8,10 @@ export default function Header({ cartCount, selectedLibros }) {
     setIsModalOpen(true);
   };
 
+  const totalCobrar = selectedLibros.reduce((total, libro) => {
+    return total + (libro.priceResult * libro.quantity);
+  }, 0);
+
   const closeCart = () => {
     setIsModalOpen(false);
   };
@@ -72,6 +76,7 @@ export default function Header({ cartCount, selectedLibros }) {
               X
             </button>
             <div className="modal-content flex flex-col items-center">
+            <div style={{ overflowY: 'auto', maxHeight: '400px' }}>
               <ul className="flex flex-col items-center space-y-4">
                 {selectedLibros.map((libro, i) => (
                   <div key={i}>
@@ -97,6 +102,9 @@ export default function Header({ cartCount, selectedLibros }) {
                   </div>
                 ))}
               </ul>
+            </div>
+              <li>Total a cobrar: {totalCobrar}</li>
+
               <button
                 className="bg-blue-500 text-white py-2 px-4 mt-4 hover-bg-blue-600"
                 onClick={handleBuyClick}
